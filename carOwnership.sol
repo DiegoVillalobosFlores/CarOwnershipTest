@@ -35,4 +35,14 @@ contract CarOwnership{
     function getCurrentPlate() public constant returns(string _currentOwnerPlate){
         _currentOwnerPlate = owners[owners.length-1].plate;
     }
+    
+    function getOwner(address at) public constant returns(string _plate, string _name){
+        for(uint8 cont = 0 ; cont < owners.length ; cont++){
+            Owner storage owner = owners[cont]; 
+            if(owner.ownership == at){
+                _plate = owner.plate;
+                _name = owner.name;
+            }
+        }
+    }
 }
